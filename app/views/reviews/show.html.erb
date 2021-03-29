@@ -1,0 +1,18 @@
+<h1><%= @review.title %></h1>
+<br>
+<p> Author -- <%= link_to @review.find_author, user_path(@review.user_id) %>
+<br>
+<p> Rating -- <%= @review.rating %>
+<br>
+<p> Location -- <%= @review.find_bar %>
+<br>
+<p> Beer -- <%= link_to @review.find_beer, beer_path(@review.beer_id) %>
+<hr>
+
+
+
+<%= @review.content %>
+
+
+
+
