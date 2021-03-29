@@ -1,0 +1,31 @@
+<h1> <%= @brewery.name %>'s profile page </h1>
+
+Brewery City: <%= @brewery.city %> <br>
+Brewery Style: <%= @brewery.style %> <br>
+
+
+<br>
+<hr>
+
+<h2> List of Beers: </h2> <br>
+
+<% @brewery.beers.each do |beer| %>
+    Name: <%= link_to beer.name, beer_path(beer) %>
+    Average Rating: <%= beer.avg_rating %>
+    Style: <%= beer.style %>
+    <br>
+<% end %>
+
+<hr>
+List of Reviews: <br>
+<ul>
+<% @brewery.reviews.each do |review| %>
+    <li> Rating: <%= review.rating %>  -- 
+    Title: <%= link_to review.title, review_path(review) %>
+    </li>
+<% end %>
+</ul>
+
+
+<hr>
+<%= link_to "All Beers", beers_path() %>

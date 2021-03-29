@@ -28,8 +28,9 @@ ActiveRecord::Schema.define(version: 2021_03_29_174925) do
 
   create_table "beers", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "style"
     t.integer "brewery_id"
+    t.integer "alcohol"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -37,7 +38,7 @@ ActiveRecord::Schema.define(version: 2021_03_29_174925) do
   create_table "breweries", force: :cascade do |t|
     t.string "name"
     t.string "city"
-    t.string "type"
+    t.string "style"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 2021_03_29_174925) do
   create_table "reviews", force: :cascade do |t|
     t.integer "user_id"
     t.integer "beer_id"
+    t.integer "bar_id"
     t.integer "rating"
     t.string "title"
     t.string "content"

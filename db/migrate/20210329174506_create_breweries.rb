@@ -3,7 +3,7 @@ class CreateBreweries < ActiveRecord::Migration[6.1]
     create_table :breweries do |t|
       t.string :name
       t.string :city
-      t.string :type
+      t.string :style
 
       t.timestamps
     end
