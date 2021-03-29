@@ -1,0 +1,17 @@
+<h1><%= @user.username %> </h1>
+<hr>
+<p> Hometown -- <%= @user.hometown %>
+<hr>
+<p> 
+<h2> Reviews:</h2>
+<ul> 
+    <% @user.reviews.each do |review| %>
+       <li> Title: <%= review.title %> 
+       <br> 
+            Review: <%= review.content %> 
+       <br> 
+            Rating: <%= review.rating %> </li>
+
+        <% end %>
+<ul>
+

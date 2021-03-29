@@ -3,6 +3,8 @@ class Review < ApplicationRecord
     belongs_to :beer 
     belongs_to :bar 
 
+    #validate the length of the title
+
     def find_author
         User.where(id: self.user_id).first.username
     end
