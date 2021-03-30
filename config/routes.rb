@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :like_tables
   resources :beer_menus
   resources :reviews
   resources :bars

@@ -3,6 +3,8 @@ class Review < ApplicationRecord
     belongs_to :beer 
     belongs_to :bar 
 
+    has_many :like_tables
+
     validates :title, length: { maximum: 60, message: "Title must be less than 60 characters."}
     validates :rating, presence: { message: "Rating is required" }
     validates :rating, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 5 }

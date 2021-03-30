@@ -1,0 +1,2 @@
+class LikeTable < ApplicationRecord
+end

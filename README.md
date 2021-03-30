@@ -24,11 +24,3 @@ Things you may want to cover:
 * ...
 
 
-Validations:
-
-REview Title Lenght - 60 Chars
-Beer Menu - every instance must be unique
-User must be 21
-Username must be unique
-review - must have everything - default value of home
-beer - musthave everything but alcohol content

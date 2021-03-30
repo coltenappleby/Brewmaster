@@ -1,0 +1,2 @@
+class LikeTablesController < ApplicationController
+end

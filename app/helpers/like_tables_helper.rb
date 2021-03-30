@@ -1,0 +1,2 @@
+module LikeTablesHelper
+end

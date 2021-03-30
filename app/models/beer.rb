@@ -5,6 +5,10 @@ class Beer < ApplicationRecord
     has_many :beer_menus 
     belongs_to :brewery 
 
+    validates :name,  presence: {message: "Name is required "}
+    validates :style,  presence: {message: "Beer style is required "}
+    validates :brewery_id,  presence: {message: "You must select a brewery"}
+
 
     def brewery_name
         Brewery.where(id: self.brewery_id).first.name
