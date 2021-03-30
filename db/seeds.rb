@@ -14,6 +14,7 @@ Brewery.destroy_all
 Beer.destroy_all
 Bar.destroy_all
 Review.destroy_all
+BeerMenu.destroy_all
 
 brewery_type = ["micro-brewery", "mid-size", "macro-brewery", "homebrewer", "bathtub", "domestic", "import"]
 
@@ -21,18 +22,18 @@ brewery_type = ["micro-brewery", "mid-size", "macro-brewery", "homebrewer", "bat
     User.create(
         username: Faker::Games::SuperMario.character,
         hometown: Faker::Games::SuperMario.location,
-        birthday: Faker::Date.between(from: '1990-01-01', to: '1999-12-31').to_s,
+        birthday: Faker::Date.between(from: '1990-01-01', to: '2005-12-31').to_s,
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.last_name    )
 end
+
 1..20.times do
     Brewery.create(
         name: Faker::Beer.brand,
-        city: Faker::Games::Pokemon.location
+        city: Faker::Games::Pokemon.location,
         style: brewery_type.sample
     )
 end
-
 
 1..50.times do
     Beer.create(
@@ -56,7 +57,14 @@ end
         beer_id: Beer.all.sample.id,
         bar_id: Bar.all.sample.id,
         rating: rand(1..5),
-        title: Faker::TvShows::StrangerThings.quote,
-        content: Faker::TvShows::Seinfeld.quote 
+        title: Faker::Science.element,
+        content: Faker::Movies::StarWars.wookiee_sentence
+    )
+end
+
+1..100.times do
+    BeerMenu.create(
+        bar_id: Bar.all.sample.id,
+        beer_id: Beer.all.sample.id
     )
 end
