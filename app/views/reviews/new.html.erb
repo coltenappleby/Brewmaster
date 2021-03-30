@@ -1,0 +1,29 @@
+<h1> Create a Review </h1>
+
+<p><%= form_for @review do |f| %>
+    <%= f.label :user_id %>
+    <%= f.collection_select :user_id,  @users, :id, :username %>
+    <br>
+    <hr>
+    <%= f.label :beer_id %>
+    <%= f.collection_select :beer_id,  @beers, :id, :name %>
+    <br>
+    <hr>
+    <%= f.label :bar_id %>
+    <%= f.collection_select :bar_id,  @bars, :id, :name %>
+    <br>
+    <hr>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <br>
+    <hr>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <br>
+    <hr>
+    <%= f.label :rating %>
+    <%= f.number_field :rating %>
+    <br>
+    <%= f.submit %>
+    
+    <% end %>
