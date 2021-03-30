@@ -5,7 +5,11 @@
 <h3> Beer Menu: </h3>
 <ul>
     <% @bar.beer_list.each do |beer| %>
-    <li> <%= link_to beer.name, beer_path(beer) %>
+    <li> <%= link_to beer.name, beer_path(beer) %> - Rating: <%= beer.avg_rating %>
     <% end %>
+    </ul>
 
-    #beer
+<hr>
+<%= link_to 'All Bars', bars_path() %> <br>
+<%= link_to 'All Beers', beers_path() %> <br>
+<%= link_to 'All Breweries', breweries_path() %>

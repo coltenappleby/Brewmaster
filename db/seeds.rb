@@ -28,7 +28,7 @@ end
 1..20.times do
     Brewery.create(
         name: Faker::Beer.brand,
-        city: Faker::Nation.capital_city,
+        city: Faker::Games::Pokemon.location
         style: brewery_type.sample
     )
 end
@@ -43,7 +43,7 @@ end
     )
 end
 
-1..50.times do
+1..20.times do
     Bar.create(
         name: Faker::Restaurant.name,
         city: Faker::Games::Pokemon.location
