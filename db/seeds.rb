@@ -27,6 +27,8 @@ brewery_type = ["micro-brewery", "mid-size", "macro-brewery", "homebrewer", "bat
         last_name: Faker::Name.last_name    )
 end
 
+
+
 1..20.times do
     Brewery.create(
         name: Faker::Beer.brand,

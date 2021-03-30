@@ -7,7 +7,12 @@ class User < ApplicationRecord
     has_many :like_tables
 
     validates :username, uniqueness: true 
+
+    has_secure_password
+    
     validate :twenty_one_and_older
+
+    
 
     
     def to_s
