@@ -8,7 +8,7 @@
 <%= f.select :style, @styles %>
 <br>
 <%= f.label :alcohol %>
-<%= f.number_field :alcohol %>
+<%= f.number_field :alcohol, step: 0.1 %>
 <br>
 <%= f.label :brewery %>
 <%= f.collection_select :brewery_id, Brewery.all, :id, :name %>
