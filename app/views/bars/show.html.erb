@@ -2,8 +2,10 @@
 
 <h2><%= @bar.city %></h2>
 <hr>
-<h3> Beers </h3>
+<h3> Beer Menu: </h3>
 <ul>
-    <% @bar.beers.each do |beer| %>
-    <li> <%= beer.name %>
+    <% @bar.beer_list.each do |beer| %>
+    <li> <%= link_to beer.name, beer_path(beer) %>
     <% end %>
+
+    #beer
