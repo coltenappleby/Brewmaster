@@ -15,8 +15,11 @@ class ReviewsController < ApplicationController
 
     def create
         @review = Review.create(review_params(:user_id, :title, :content, :beer_id, :bar_id, :rating)) 
-
-        redirect_to review_path(@review.id)
+        if @review.valid?
+            redirect_to review_path(@review.id)
+        else
+            render :new 
+        end
         #come back to deal with validations
     end
 

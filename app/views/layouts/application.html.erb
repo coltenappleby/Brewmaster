@@ -11,6 +11,16 @@
   </head>
 
   <body>
+  
+    <nav>
+
+      <ul id="mainmenu">
+        <li><%= link_to 'All Bars', bars_path() %> </li>
+        <li><%= link_to 'All Beers', beers_path() %> </li>
+        <li><%= link_to 'All Breweries', breweries_path() %></li>
+      </ul>
+    </nav>
+ 
     <%= yield %>
   </body>
 </html>

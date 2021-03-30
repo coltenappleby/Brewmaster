@@ -1,16 +1,26 @@
 <h1> Create a Review </h1>
 
+<% if @review.errors.any?  %>
+    Errors
+    <ul>
+    <% @review.errors.full_messages.each do |message| %>
+        <li> <%= message %> </li>
+    <% end %>
+    </ul>
+   <% end %>
+
+
 <p><%= form_for @review do |f| %>
     <%= f.label :user_id %>
-    <%= f.collection_select :user_id,  @users, :id, :username %>
+    <%= f.collection_select :user_id,  User.all, :id, :username %>
     <br>
     <hr>
     <%= f.label :beer_id %>
-    <%= f.collection_select :beer_id,  @beers, :id, :name %>
+    <%= f.collection_select :beer_id,  Beer.all, :id, :name %>
     <br>
     <hr>
     <%= f.label :bar_id %>
-    <%= f.collection_select :bar_id,  @bars, :id, :name %>
+    <%= f.collection_select :bar_id,  Bar.all, :id, :name %>
     <br>
     <hr>
     <%= f.label :title %>
