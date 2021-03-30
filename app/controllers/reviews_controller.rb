@@ -1,7 +1,7 @@
 class ReviewsController < ApplicationController
     
     def show
-        @review = Review.find(params[:id])
+        find_review
     end
 
     def new 
@@ -20,9 +20,28 @@ class ReviewsController < ApplicationController
         #come back to deal with validations
     end
 
+    def edit
+        find_review 
+        render :edit 
+    end
+
+    def update
+        find_review
+        @review.update(review_params(:title, :rating, :content))
+        
+        redirect_to review_path(@review)
+
+    end
+
     private 
 
     def review_params(*args)
         params.require(:review).permit(*args)
     end
+
+    def find_review
+        @review = Review.find(params[:id])
+    end
+
+
 end
