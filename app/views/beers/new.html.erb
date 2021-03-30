@@ -1,0 +1,18 @@
+<h1> Create a beer </h1>
+
+<%= form_for @beer do |f| %>
+<%= f.label :name %>
+<%= f.text_field :name %>
+<br>
+<%= f.label :style %>
+<%= f.select :style, @styles %>
+<br>
+<%= f.label :alcohol %>
+<%= f.number_field :alcohol %>
+<br>
+<%= f.label :brewery %>
+<%= f.collection_select :brewery_id, Brewery.all, :id, :name %>
+<br>
+<%= f.submit "Create Beer" %>
+
+<% end %>
