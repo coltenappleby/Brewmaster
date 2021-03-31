@@ -26,7 +26,8 @@ class ReviewsController < ApplicationController
         if @review.valid?
             redirect_to review_path(@review.id)
         else
-            render :new 
+            # render :new 
+            redirect_to beer_path(:beer_id)
         end
         #come back to deal with validations
     end

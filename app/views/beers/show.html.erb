@@ -13,6 +13,35 @@ List of Reviews: <br>
     Rating: <%= review.rating %>
     <hr>
 <% end %>
+<br>
+<hr>
+<p><%= form_for @new_review do |f| %>
+
+    
+    <%= f.hidden_field :user_id, value: @current_user.id %>
+    <br>
+    <hr>
+    <%= f.hidden_field :beer_id,  value: @beer.id  %>
+    <br>
+    <hr>
+    <%= f.label :bar_id %>
+    <%= f.collection_select :bar_id,  Bar.all, :id, :name %>
+    <br>
+    <hr>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <br>
+    <hr>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <br>
+    <hr>
+    <%= f.label :rating %>
+    <%= f.number_field :rating %>
+    <br>
+    <%= f.submit %>
+    
+    <% end %>
 
 
 <hr>

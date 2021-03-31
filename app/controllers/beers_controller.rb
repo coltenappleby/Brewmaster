@@ -6,10 +6,12 @@ class BeersController < ApplicationController
 
     def show
         find_beer 
+        @new_review = Review.new 
     end
 
     def new
         beer_styles 
+        
         @beer = Beer.new
     end
     
