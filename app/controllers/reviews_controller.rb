@@ -5,6 +5,8 @@ class ReviewsController < ApplicationController
     end
 
     def new 
+
+        @current_user = User.find_by(id: cookies[:user_id])
         @review = Review.new
 
         @users = User.all 
