@@ -14,7 +14,14 @@
 
         <% end %>
 <ul>
+<hr>
 <ul>
+liked_reviews
+ <% @user.liked_reviews.each do |review| %>
+       <li> <%= link_to review.title, review_path(review) %> <br>
+        <% end %>
+<ul>
+
 
 
 <hr>

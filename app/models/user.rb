@@ -28,10 +28,12 @@ class User < ApplicationRecord
 
     #like tables 
     def liked_reviews
-        like_tables = []
+        reviews = []
         self.like_tables.each do |relationship|
-            like_tables << LikeTable.find(relationship.review_id)
+            reviews << Review.find(relationship.review_id)
         end
-        return like_tables
+        return reviews
     end
 end
+
+
