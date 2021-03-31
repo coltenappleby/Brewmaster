@@ -24,4 +24,14 @@ class User < ApplicationRecord
             errors.add(:birthday, "You must be over 21." )
         end
     end
+
+
+    #like tables 
+    def liked_reviews
+        like_tables = []
+        self.like_tables.each do |relationship|
+            like_tables << LikeTable.find(relationship.review_id)
+        end
+        return like_tables
+    end
 end

@@ -13,7 +13,7 @@ class Review < ApplicationRecord
     # validates :user_id, prescence: true 
     #validate the length of the title
 
-    validate :current_user_only
+    # validate :current_user_only
 
     def find_author
         User.where(id: self.user_id).first.username
@@ -27,12 +27,12 @@ class Review < ApplicationRecord
         Beer.where(id: self.beer_id).first.name 
     end
 
-    def current_user_only
-        current_user_instance
-        if user_id !=  @current_user.id #cookies[:user_id]
-            errors.add(:user_id, "You must be logged in." )
-        end
-    end
+    # def current_user_only
+    #     current_user_instance
+    #     if user_id !=  @current_user.id #cookies[:user_id]
+    #         errors.add(:user_id, "You must be logged in." )
+    #     end
+    # end
 
     def likes
         LikeTable.where(review_id: self.id).count()
