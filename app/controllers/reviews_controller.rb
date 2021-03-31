@@ -26,8 +26,11 @@ class ReviewsController < ApplicationController
         if @review.valid?
             redirect_to review_path(@review.id)
         else
+            #flash[:errors] = flash.errors.full_messages
             # render :new 
-            redirect_to beer_path(:beer_id)
+            #redirect_to beer_path(params[:beer_id])
+
+            redirect_to request.referrer
         end
         #come back to deal with validations
     end

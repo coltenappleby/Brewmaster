@@ -6,8 +6,6 @@ Average Rating: <%= @beer.avg_rating%>
 <br>
 <hr>
 List of Reviews: <br>
-
-
 <% @beer.list_of_reviews.each do |review| %>
     Title: <%= link_to review.title, review_path(review) %>
     Rating: <%= review.rating %>
@@ -17,13 +15,9 @@ List of Reviews: <br>
 <hr>
 <p><%= form_for @new_review do |f| %>
 
-    
     <%= f.hidden_field :user_id, value: @current_user.id %>
-    <br>
-    <hr>
-    <%= f.hidden_field :beer_id,  value: @beer.id  %>
-    <br>
-    <hr>
+    <%= f.hidden_field :beer_id, value: @beer.id  %>
+
     <%= f.label :bar_id %>
     <%= f.collection_select :bar_id,  Bar.all, :id, :name %>
     <br>
@@ -41,7 +35,16 @@ List of Reviews: <br>
     <br>
     <%= f.submit %>
     
+<% end %> <p>
+
+<% if @new_review.errors.any?  %>
+    Errors:
+    <ul>
+    <% @new_review.errors.full_messages.each do |message| %>
+        <li> <%= message %> </li>
     <% end %>
+    </ul>
+   <% end %>
 
 
 <hr>
