@@ -34,6 +34,10 @@ class Review < ApplicationRecord
         end
     end
 
+    def likes
+        LikeTable.where(review_id: self.id).count()
+    end
+
     # def twenty_one_and_older
     #     if birthday > (Date.today - 21.years)
     #         errors.add(:birthday, "You must be over 21." )

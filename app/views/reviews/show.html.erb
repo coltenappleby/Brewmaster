@@ -10,9 +10,16 @@
 <hr>
 
 
-
 <%= @review.content %>
 
 
+
+<br>
+<br>
+
+
+
+<%= button_to "Like", like_tables_path(review_id: @review.id), method: :post  %>
+Total Likes: <%= @review.likes %>
 
 

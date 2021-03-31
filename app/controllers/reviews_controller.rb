@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
     before_action :authorized
     
     def show
+        logged_in_user
         find_review
     end
 
