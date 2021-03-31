@@ -24,7 +24,8 @@ brewery_type = ["micro-brewery", "mid-size", "macro-brewery", "homebrewer", "bat
         hometown: Faker::Games::SuperMario.location,
         birthday: Faker::Date.between(from: '1990-01-01', to: '2005-12-31'),
         first_name: Faker::Name.first_name,
-        last_name: Faker::Name.last_name    )
+        last_name: Faker::Name.last_name,
+        password: Faker::Construction.material    )
 end
 
 
