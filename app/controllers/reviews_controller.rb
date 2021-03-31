@@ -7,6 +7,8 @@ class ReviewsController < ApplicationController
     def new 
 
         @current_user = User.find_by(id: cookies[:user_id])
+ 
+
         @review = Review.new
 
         @users = User.all 
@@ -17,6 +19,7 @@ class ReviewsController < ApplicationController
 
     def create
         @review = Review.create(review_params(:user_id, :title, :content, :beer_id, :bar_id, :rating)) 
+        
         if @review.valid?
             redirect_to review_path(@review.id)
         else
@@ -46,6 +49,10 @@ class ReviewsController < ApplicationController
 
     def find_review
         @review = Review.find(params[:id])
+    end
+
+    def current_user_instance
+        @current_user = User.find_by(id: cookies[:user_id])
     end
 
 

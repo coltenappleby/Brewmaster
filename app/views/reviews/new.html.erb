@@ -12,7 +12,7 @@
 
 <p><%= form_for @review do |f| %>
     
-    <%= f.hidden_field :user_id, :value => @current_user %>
+    <%= f.hidden_field :user_id, value: @current_user.id %>
     <br>
     <hr>
     <%= f.label :beer_id %>

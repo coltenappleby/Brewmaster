@@ -13,6 +13,8 @@ class Review < ApplicationRecord
     # validates :user_id, prescence: true 
     #validate the length of the title
 
+    validate :current_user_only
+
     def find_author
         User.where(id: self.user_id).first.username
     end
@@ -24,6 +26,19 @@ class Review < ApplicationRecord
     def find_beer
         Beer.where(id: self.beer_id).first.name 
     end
-        
+
+    def current_user_only
+        current_user_instance
+        if user_id !=  @current_user.id #cookies[:user_id]
+            errors.add(:user_id, "You must be logged in." )
+        end
+    end
+
+    # def twenty_one_and_older
+    #     if birthday > (Date.today - 21.years)
+    #         errors.add(:birthday, "You must be over 21." )
+    #     end
+    # end
+
    
 end
