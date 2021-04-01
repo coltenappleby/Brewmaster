@@ -44,3 +44,15 @@ h1 {
     /* float: center; */
     text-align: center;
 }
+
+.form-container {
+    text-align: center;
+    max-width: 85%;
+    margin: 0px auto;
+    /* background-color: rgb(233, 163, 163); */
+    height: 70vh;
+  }
+
+ 
+
+
