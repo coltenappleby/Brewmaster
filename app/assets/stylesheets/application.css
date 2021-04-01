@@ -14,18 +14,33 @@
  *= require_self
  */
 
+ /* 10px 10px 10px 300px */
+
  ol,ul {
      list-style: none;
  }
 #mainmenu  {
-    margin: 10px;
-    width: 900px;
+    margin: 0 auto;
+    width: 1000px;
 }
 
 #mainmenu li {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+    /* position: relative; */
     display:block;
-    width: 120px;
+    width: 130px;
     float: left;
-    margin-left: 2px;
-    /* border: 1px solid #000; */
+    text-align: center;
+    padding: 2px;
+    margin-left: 10px;
+    /* border: 1px solid rgb(189, 155, 155); */
+}
+body {background-color: beige;}
+
+h1 {
+    /* margin: 0 auto; */
+    /* width: 1000px; */
+    /* float: center; */
+    text-align: center;
 }

@@ -1,3 +1,4 @@
+<br>
 <h1><%= @user.username %> </h1>
 <hr>
 <p> Hometown -- <%= @user.hometown %>
@@ -16,7 +17,7 @@
 <ul>
 <hr>
 <ul>
-liked_reviews
+<h3> Liked Reviews </h3>
  <% @user.liked_reviews.each do |review| %>
        <li> <%= link_to review.title, review_path(review) %> <br>
         <% end %>

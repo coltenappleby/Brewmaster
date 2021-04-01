@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
     before_action :logged_in_user
+    # before_action :authorized
 
     def logged_in_user
         @current_user = User.find_by(id: cookies[:user_id])
@@ -10,7 +11,7 @@ class ApplicationController < ActionController::Base
     end
 
     def authorized
-        redirect_to login_path unless logged_in?
+        redirect_to new_login_path unless logged_in?
     end
 
     

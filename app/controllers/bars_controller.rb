@@ -1,5 +1,5 @@
 class BarsController < ApplicationController
-
+    before_action :authorized
     def index
         @bars = Bar.all 
     end

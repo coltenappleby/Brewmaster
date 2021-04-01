@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    # skip_before_action :authorized, only: [:login]
 
     def login
         @user = User.find_by(username: params[:session][:username])
@@ -18,4 +19,8 @@ class SessionsController < ApplicationController
 
         redirect_to new_login_path 
     end
+
+    # def new_login 
+
+    # end
 end

@@ -1,4 +1,5 @@
 class BeersController < ApplicationController
+    before_action :authorized
 
     def index
         @beers = Beer.all
