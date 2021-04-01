@@ -10,26 +10,43 @@ Brewery Style: <%= @brewery.style %> <br>
 
 <h2> List of Beers: </h2> <br>
 
-<% @brewery.beers.each do |beer| %>
-    Name: <%= link_to beer.name, beer_path(beer) %>
-    Average Rating: <%= beer.avg_rating %>
-    Style: <%= beer.style %>
-    <br>
-<% end %>
+<table>
+    <thead>
+        <tr>   
+            <th> Beer </th>
+            <th> Average Rating </th>
+            <th> Style </th>
+        </tr>
+    </thead>
+    <% @brewery.beers.order(:name).each do |beer| %>
+    <tr>
+        <td> <%= link_to beer.name, beer_path(beer) %> </td>
+        <td> <%= beer.avg_rating %> </td>
+        <td> <%= beer.style %>
+    </tr>
+    <% end %>
+</table>
 
 <hr>
-List of Reviews: <br>
-<ul>
-<% @brewery.reviews.each do |review| %>
-    <li> Rating: <%= review.rating %>  -- 
-    Title: <%= link_to review.title, review_path(review) %>
-    </li>
-<% end %>
-</ul>
+
+<h2> List of Reviews: </h2> <br>
+
+<table>
+    <thead>
+        <tr>   
+            <th> Title </th>
+            <th> Rating </th>
+            <th> User </th>
+        </tr>
+    </thead>
+    <% @brewery.reviews.order(:name).each do |review| %>
+    <tr>
+        <td> <%= link_to review.title, review_path(review) %> </td>
+        <td> <%= review.rating %> </td>
+        <td> <%= link_to review.user.username, user_path(review.user.id) %>
+    </tr>
+    <% end %>
+</table>
 
 
 
-<hr>
-<%= link_to 'All Bars', bars_path() %> <br>
-<%= link_to 'All Beers', beers_path() %> <br>
-<%= link_to 'All Breweries', breweries_path() %>

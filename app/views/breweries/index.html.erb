@@ -1,8 +1,21 @@
 <br>
 <h1>  View All Breweries </h1>
 
-<ul>
-<% @breweries.each do |brewery| %>
-    <li> <%= link_to brewery.name, brewery_path(brewery) %> </li>
-<% end %>
-</ul>
+<table>
+    <thead>
+        <tr>   
+            <th> Brewery </th>
+            <th> Average Rating </th>
+            <th> City </th>
+            <th> Type </th>
+        </tr>
+    </thead>
+    <% @breweries.order(:name).each do |brewery| %>
+    <tr>
+        <td> <%= link_to brewery.name, brewery_path(brewery) %> </td>
+        <td> <%= brewery.brew_avg_rating %> </td>
+        <td> <%= brewery.city %>
+        <td> <%= brewery.style %>
+    </tr>
+    <% end %>
+</table>

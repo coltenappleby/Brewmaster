@@ -1,8 +1,19 @@
 <br>
 <h1> View All Beers </h1>
 
-<ul>
-<% @beers.each do |beer| %>
-    <li> <%= link_to beer.name, beer_path(beer) %> </li>
-<% end %>
-</ul>
+
+<table>
+    <thead>
+        <tr>   
+            <th> Beer Name </th>
+            <th> Rating </th>
+        </tr>
+    </thead>
+    <% @beers.each do |beer| %>
+    <tr>
+        <td> <%= link_to beer.name, beer_path(beer) %> </td>
+        <td> <%= beer.avg_rating %> </td>
+    </tr>
+    <% end %>
+</table>
+

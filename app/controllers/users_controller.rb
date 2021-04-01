@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
+    
+    before_action :authorized
+    
     def show
         find_user
+        logged_in_user                 
     end
 
     def new

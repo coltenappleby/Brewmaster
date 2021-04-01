@@ -19,6 +19,7 @@ class Beer < ApplicationRecord
     end
 
     def avg_rating
-        self.reviews.sum(:rating)/(self.reviews.count().to_f)
+        rat = self.reviews.sum(:rating)/(self.reviews.count().to_f)
+        rat.round(2)
     end
 end

@@ -4,28 +4,57 @@
 <p> Hometown -- <%= @user.hometown %>
 <hr>
 <p> 
-<h2> Reviews: </h2>
-<ul> 
-    <% @user.reviews.each do |review| %>
-       <li> Title: <%= review.title %> 
-       <br> 
-            Review: <%= review.content %> 
-       <br> 
-            Rating: <%= review.rating %> </li>
 
-        <% end %>
-<ul>
+
+<h3> <%= @user.username%>'s Reviews </h3>
+
+<table>
+    <thead>
+        <tr>   
+            <th> Title   </th>
+            <th> Beer    </th>
+            <th> Brewery </th>
+            <th> Rating  </th>
+            <th> content </th>
+        </tr>
+    </thead>
+    <% @user.reviews.order(:title).each do |review| %>
+    <tr>
+        <td> <%= link_to review.title, review_path(review) %> </td>
+        <td> <%= review.beer.name %> </td>
+        <td> <%= review.beer.brewery.name %> </td>
+        <td> <%= review.rating %> </td>
+        <td> <%= review.content %>
+    </tr>
+    <% end %>
+</table>
+
 <hr>
-<ul>
+
 <h3> Liked Reviews </h3>
- <% @user.liked_reviews.each do |review| %>
-       <li> <%= link_to review.title, review_path(review) %> <br>
-        <% end %>
-<ul>
 
+<table>
+    <thead>
+        <tr>   
+            <th> Title   </th>
+            <th> Author </th>
+        </tr>
+    </thead>
+    <% @user.liked_reviews.each do |review| %>
+    <tr>
+        <td> <%= link_to review.title, review_path(review) %> </td>
+        <td> <%= review.user.username%> </td>
+    </tr>
+    <% end %>
+</table>
 
-
+<br>
 <hr>
-<%= link_to 'All Bars', bars_path() %> <br>
-<%= link_to 'All Beers', beers_path() %> <br>
-<%= link_to 'All Breweries', breweries_path() %>
+<br>
+<% if @user.id == @current_user.id %>
+     Update your home town:
+     <%= form_for @current_user do |f| %>
+          <%= f.text_field :hometown %>
+          <%= f.submit "Update" %>
+         <% end %>
+<% end %>
