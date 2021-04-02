@@ -16,6 +16,16 @@
 
  /* 10px 10px 10px 300px */
 
+ .banner-image {
+     width: auto;
+     margin: 0 auto;
+     height: 200px;
+     background-image: url('brewmaster.jpg');
+     background-size: cover;
+     /* object-fit: cover;
+     object-position: 200px 100px; */
+ }
+
  ol,ul {
      list-style: none;
  }
