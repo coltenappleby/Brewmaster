@@ -8,6 +8,7 @@
 
 
 require 'faker'
+require 'csv'
 
 User.destroy_all
 Brewery.destroy_all
@@ -29,24 +30,57 @@ brewery_type = ["micro-brewery", "mid-size", "macro-brewery", "homebrewer", "bat
 end
 
 
+#################################################################
+# Brewery Import
 
-1..2000.times do
-    Brewery.create(
-        name: Faker::Beer.brand,
-        city: Faker::Games::Pokemon.location,
-        style: brewery_type.sample
-    )
+brewery_type = ["micro-brewery", "mid-size", "macro-brewery", "homebrewer", "bathtub", "domestic", "import"]
+breweries_csv = []
+
+CSV.foreach('lib/Breweries.csv', headers: true) do |row|
+    breweries_csv << row.to_h
 end
 
-1..50.times do
-    Beer.create(
-        name: Faker::Beer.name,
-        style: Faker::Beer.style,
-        brewery_id: Brewery.all.sample.id,
-        alcohol: Faker::Beer.alcohol
-    )
+breweries_csv.each do |brewery|
+    if brewery["city"] == nil
+        brewery["city"] = Faker::Games::Pokemon.location
+    end
 end
 
+breweries_csv = breweries_csv.each { |h| h.delete_if{|key,value| value == nil}}
+
+breweries_csv.each do |brewery|
+    brewery[:style] = brewery_type.sample
+end
+
+Brewery.import breweries_csv
+
+puts "Brewery Seed Done. #{Brewery.all.count()} breweries created."
+
+#################################################################
+# Brew Import
+
+beers_csv = []
+CSV.foreach('lib/Beers2.csv', headers: true) do |row|
+    beers_csv << row.to_h
+end
+
+beers_csv = beers_csv.each { |h| h.delete_if{|key,value| value == nil}}
+
+Beer.import beers_csv
+
+puts "Beer Seed Done. #{Beer.all.count()} beers created."
+
+#################################################################
+
+
+# 1..50.times do
+#     Beer.create(
+#         name: Faker::Beer.name,
+#         style: Faker::Beer.style,
+#         brewery_id: Brewery.all.sample.id,
+#         alcohol: Faker::Beer.alcohol
+#     )
+# end
 
 
 1..20.times do
@@ -56,7 +90,9 @@ end
     )
 end
 
-1..100.times do
+puts "Bar Seed Done. #{Bar.all.count()} bars created."
+
+1...8000.times do
     Review.create(
         user_id: User.all.sample.id,
         beer_id: Beer.all.sample.id,
@@ -67,6 +103,8 @@ end
     )
 end
 
+puts "Review Seed Done. #{Review.all.count()} reviews created."
+
 1..100.times do
     BeerMenu.create(
         bar_id: Bar.all.sample.id,
@@ -74,33 +112,4 @@ end
     )
 end
 
-#################################################################
-# require 'csv'
-
-
-
-# breweries_csv = []
-# CSV.foreach('lib/Breweries.csv', headers: true) do |row|
-#     breweries_csv << row.to_h
-# end
-
-# breweries_csv.each do |brewery|
-#     brewery[:style] = brewery_type.sample
-# end
-
-# breweries_csv.each do |brewery|
-#     if !brewery.key?(:city)
-#         brewery[:city] = Faker::Games::Pokemon.location
-#     end
-# end
-
-# #Brewery.import breweries_csv
-
-# beers_csv = []
-# CSV.foreach('lib/Beers2.csv', headers: true) do |row|
-#     beers_csv << row.to_h
-# end
-
-# Beer.import beers_csv
-
-
+puts "BeerMenu Seed Done. #{BeerMenu.all.count()} menus created."
