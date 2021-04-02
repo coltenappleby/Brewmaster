@@ -49,7 +49,11 @@ class ReviewsController < ApplicationController
     end
 
     def destroy
-        find_review 
+        find_review
+
+        @review.like_tables.each do |relationship|
+            relationship.destroy
+        end
         @review.destroy 
         redirect_to user_path(@current_user)
     end
