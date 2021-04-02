@@ -38,7 +38,10 @@ ActiveRecord::Schema.define(version: 2021_03_30_200237) do
   create_table "breweries", force: :cascade do |t|
     t.string "name"
     t.string "city"
+    t.string "country"
     t.string "style"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
