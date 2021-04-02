@@ -14,6 +14,8 @@ List of Reviews: <br>
 <% end %>
 <br>
 <hr>
+
+<h3> Create a Review for <%= @beer.name %> : </h3>
 <p><%= form_for @new_review do |f| %>
 
     <%= f.hidden_field :user_id, value: @current_user.id %>
@@ -22,21 +24,25 @@ List of Reviews: <br>
     <%= f.label :bar_id %>
     <%= f.collection_select :bar_id,  Bar.all, :id, :name %>
     <br>
-    <hr>
+    <br>
     <%= f.label :title %>
     <%= f.text_field :title %>
     <br>
-    <hr>
+    <br>
     <%= f.label :content %>
     <%= f.text_area :content %>
     <br>
-    <hr>
+    <br>
     <%= f.label :rating %>
     <%= f.number_field :rating %>
+    <br>
     <br>
     <%= f.submit %>
     
 <% end %> <p>
+
+
+
 
 <% if @new_review.errors.any?  %>
     Errors:
@@ -49,6 +55,8 @@ List of Reviews: <br>
 
 
 <hr>
+
+
 <%= link_to 'All Bars', bars_path() %> <br>
 <%= link_to 'All Beers', beers_path() %> <br>
 <%= link_to 'All Breweries', breweries_path() %>
