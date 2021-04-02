@@ -38,6 +38,15 @@ end
     )
 end
 
+1..50.times do
+    Beer.create(
+        name: Faker::Beer.name,
+        style: Faker::Beer.style,
+        brewery_id: Brewery.all.sample.id,
+        alcohol: Faker::Beer.alcohol
+    )
+end
+
 
 
 1..20.times do
@@ -47,51 +56,51 @@ end
     )
 end
 
-# 1..100.times do
-#     Review.create(
-#         user_id: User.all.sample.id,
-#         beer_id: Beer.all.sample.id,
-#         bar_id: Bar.all.sample.id,
-#         rating: rand(1..5),
-#         title: Faker::Science.element,
-#         content: Faker::Movies::StarWars.wookiee_sentence
-#     )
-# end
+1..100.times do
+    Review.create(
+        user_id: User.all.sample.id,
+        beer_id: Beer.all.sample.id,
+        bar_id: Bar.all.sample.id,
+        rating: rand(1..5),
+        title: Faker::Science.element,
+        content: Faker::Movies::StarWars.wookiee_sentence
+    )
+end
 
-# 1..100.times do
-#     BeerMenu.create(
-#         bar_id: Bar.all.sample.id,
-#         beer_id: Beer.all.sample.id
-#     )
-# end
+1..100.times do
+    BeerMenu.create(
+        bar_id: Bar.all.sample.id,
+        beer_id: Beer.all.sample.id
+    )
+end
 
 #################################################################
-require 'csv'
+# require 'csv'
 
 
 
-breweries_csv = []
-CSV.foreach('lib/Breweries.csv', headers: true) do |row|
-    breweries_csv << row.to_h
-end
+# breweries_csv = []
+# CSV.foreach('lib/Breweries.csv', headers: true) do |row|
+#     breweries_csv << row.to_h
+# end
 
-breweries_csv.each do |brewery|
-    brewery[:style] = brewery_type.sample
-end
+# breweries_csv.each do |brewery|
+#     brewery[:style] = brewery_type.sample
+# end
 
-breweries_csv.each do |brewery|
-    if !brewery.key?(:city)
-        brewery[:city] = Faker::Games::Pokemon.location
-    end
-end
+# breweries_csv.each do |brewery|
+#     if !brewery.key?(:city)
+#         brewery[:city] = Faker::Games::Pokemon.location
+#     end
+# end
 
-#Brewery.import breweries_csv
+# #Brewery.import breweries_csv
 
-beers_csv = []
-CSV.foreach('lib/Beers2.csv', headers: true) do |row|
-    beers_csv << row.to_h
-end
+# beers_csv = []
+# CSV.foreach('lib/Beers2.csv', headers: true) do |row|
+#     beers_csv << row.to_h
+# end
 
-Beer.import beers_csv
+# Beer.import beers_csv
 
 

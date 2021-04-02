@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     
-    # before_action :authorized 
+    before_action :authorized, only: [:update, :show]
     
     def show
         find_user
@@ -33,6 +33,8 @@ class UsersController < ApplicationController
 
         redirect_to user_path(@user)
     end
+
+    
     
 
     private
