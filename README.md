@@ -4,6 +4,8 @@
 
 A web app designed to allow users to view beers, find breweries, and write reviews on the beers they drink. Developed in Ruby on Rails.
 
+This was a group project done with [jabair14](https://github.com/jabair14). Link to the orginal repo can be found [here](https://github.com/jabair14/brewmaster).
+
 _______________________________________________________________________________________
 
 ## To use this App:
